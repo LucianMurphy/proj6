@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stored Controle Times</title>
+  <meta name = "viewport" content = "width=device-width, initial-scale=1">
+  <link rel = "stylesheet"
+   href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+<div class = "container">
+  <h1>Stored Controle Times</h1>
+
+  {% if items %}
+  <p>Brevet distance: {{ items[0].brevet_dist_km }} km</p>
+  <table class = "table table-striped">
+    <tr><th>Km</th><th>Location</th><th>Open</th><th>Close</th></tr>
+    {% for item in items %}
+    <tr>
+      <td>{{ item.km }}</td>
+      <td>{{ item.location }}</td>
+      <td>{{ item.open }}</td>
+      <td>{{ item.close }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class = "text-danger">No controle times in the database yet. Enter some on the calculator page and press Submit.</p>
+  {% endif %}
+
+  <a href="{{ url_for('index') }}" class="btn btn-default">Back to calculator</a>
+</div>
+</body>
+</html>
